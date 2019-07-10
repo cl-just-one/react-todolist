@@ -24,3 +24,32 @@
     Click
   </button>
   ```
+
+### React事件处理的this处理
+  ES6 class并不会为方法自动绑定this到当前对象。
+#### 使用箭头函数
+  直接在React元素中采用箭头函数定义事件的处理函数，如：
+  ```
+  class MyComponent extends React.Component {
+    constructor(props) {
+      super(props);
+      this.state = {
+        number: 0
+      }
+    }
+
+    render() {
+      return (
+        <button onClick={(event) => {
+            console.log(this.state.number);
+          }}>
+          Click
+        </button>
+        )
+    }
+  }
+  ```
+  箭头函数中的this指向的是函数定义时的对象，所以可以保证this总是指向当前组件的实例对象。
+  > 当事件处理逻辑比较复杂时，如果把所有的逻辑直接写在onClick的大括号中，就会导致render函数变的臃肿，不容易直观地看出组件的UI结构，代码可读性也不好。这样，我们可以把逻辑处理封装成组件的一个方法，然后在箭头函数中调用该方法即可。
+#### React生命周期
+  ![生命周期](https://user-gold-cdn.xitu.io/2017/11/11/88e11709488aeea3f9c6595ee4083bf3?imageView2/0/w/1280/h/960/format/webp/ignore-error/1, "React生命周期")
