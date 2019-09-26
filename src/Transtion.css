@@ -24,7 +24,7 @@
 }
 
 .show {
-  animation: show-item 2s ease-in forwards;
+  animation: show-item 5s ease-in forwards;
 }
 
 @keyframes hide-item {
@@ -43,5 +43,5 @@
 }
 
 .hide {
-  animation: hide-item 2s ease-in forwards;
+  animation: hide-item 5s ease-in forwards;
 }

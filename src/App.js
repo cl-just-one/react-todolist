@@ -49,11 +49,11 @@ class App extends Component {
   }
   // 组件渲染之前执行
   componentWillMount() {
-    console.log("componentWillMount");
+    console.log("1.componentWillMount");
   }
   // 组件渲染完成执行
   componentDidMount() {
-    console.log("componentDidMount");
+    console.log("3.componentDidMount");
     axios.get('/api/todolist').then((res) => {
       console.log(res.data);
       this.setState(() => {
@@ -68,26 +68,26 @@ class App extends Component {
   }
   // 组件是否应该更新
   shouldComponentUpdate() {
-    console.log("shouldComponentUpdate");
+    console.log("4.shouldComponentUpdate");
     return true;
   }
   // 组件将要更新
   componentWillUpdate() {
-    console.log("componentWillUpdate");
+    console.log("5.componentWillUpdate");
   }
   // 组件更新完成
   componentDidUpdate() {
-    console.log("componentDidUpdate");
+    console.log("6.componentDidUpdate");
   }
   render() {
-    console.log("render");
+    console.log("2.render");
     return (
       <Fragment>
         <div>
           <label htmlFor="inputValue">输入内容：</label>
           <input id="inputValue"
             value={this.state.inputValue}
-            onChange={this.handleInputChange.bind(this)}
+            onChange={() => {this.handleInputChange()}}
             ref={(input) => {this.input = input}}/>
           <button onClick={this.submitInputChange.bind(this)}>提交</button>
         </div>
